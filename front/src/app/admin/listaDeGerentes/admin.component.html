@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <title>Lista de Gerentes</title>
+</head>
+
+<body>
+  <!-- Daily Activity -->
+  <mat-card class="w-100">
+    <mat-card-content>
+      <h4 class="mb-56">Lista de Gerentes</h4>
+
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" class="text-nowrap w-100">
+          <!-- Nome Column -->
+          <ng-container matColumnDef="assigned">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let element">
+              <a class="mb-0 fw-medium" href="#" [routerLink]="['/admin/gerenteperfil/'+ element.email]">{{ element.nome
+                }}</a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>N Clientes</th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-1">{{ element.numClientes || 0 }}</p>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="budget">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-1">{{ element.email }}</p>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="priority">
+            <th mat-header-cell *matHeaderCellDef>Cpf</th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-1">{{ element.cpf }}</p>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef>Ação</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-mini-fab class="mb-8 me-8" color="primary"
+                [routerLink]="['/admin/gerente/' + element?.email]">
+                <feather-icon name="Edit" class="w-2 h-2"></feather-icon>
+              </button>
+              <button mat-mini-fab class="mb-8 me-8" color="warn" (click)="deletarGerente(element.id)">
+                <feather-icon name="Delete" class="w-2 h-2"></feather-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</body>
+
+</html>
