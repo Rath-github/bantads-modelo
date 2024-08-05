@@ -3,33 +3,16 @@ package com.bantads.saga.amqp;
 import java.io.Serializable;
 
 import com.bantads.saga.models.ClienteDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClienteTransfer implements Serializable {
-  ClienteDTO cliente;
-  String action;
-
-  public ClienteTransfer() {
-  }
-
-  public ClienteTransfer(ClienteDTO cliente, String action) {
-    this.cliente = cliente;
-    this.action = action;
-  }
-
-  public ClienteDTO getCliente() {
-    return cliente;
-  }
-
-  public void setCliente(ClienteDTO cliente) {
-    this.cliente = cliente;
-  }
-
-  public String getAction() {
-    return action;
-  }
-
-  public void setAction(String action) {
-    this.action = action;
-  }
-
+    private ClienteDTO cliente;
+    private String action;
 }

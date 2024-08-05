@@ -3,42 +3,17 @@ package com.bantads.saga.amqp;
 import java.io.Serializable;
 
 import com.bantads.saga.models.GerenteDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GerenteTransfer implements Serializable {
-  GerenteDTO gerente;
-  Long cliente;
-  String action;
+    private static final long serialVersionUID = 1L; // Adicione um UID para a serialização
 
-  public GerenteTransfer() {
-  }
-
-  public GerenteTransfer(GerenteDTO gerente, String action) {
-    this.gerente = gerente;
-    this.action = action;
-  }
-
-  public GerenteDTO getGerente() {
-    return gerente;
-  }
-
-  public void setGerente(GerenteDTO gerente) {
-    this.gerente = gerente;
-  }
-
-  public String getAction() {
-    return action;
-  }
-
-  public void setAction(String action) {
-    this.action = action;
-  }
-
-  public Long getCliente() {
-    return cliente;
-  }
-
-  public void setCliente(Long cliente) {
-    this.cliente = cliente;
-  }
-
+    private GerenteDTO gerente;
+    private Long cliente;
+    private String action;
 }
