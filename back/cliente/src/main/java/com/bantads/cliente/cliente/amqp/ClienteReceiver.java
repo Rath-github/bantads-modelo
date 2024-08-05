@@ -54,7 +54,7 @@ public class ClienteReceiver {
       sender.send(clienteTransfer);
       return clienteTransfer;
     } else if (clienteTransfer.getAction().equals("cliente-register")) {
-      // luli é o meu amor do coração
+      
 
       ClienteDTO cliente = clienteTransfer.getCliente();
 
@@ -64,15 +64,13 @@ public class ClienteReceiver {
         clienteTransfer.setAction("cliente-failed");
 
         this.template.convertAndSend("saga", clienteTransfer);
-        // return new ResponseEntity<>("Dados do cliente i;nválidos",
-        // HttpStatus.BAD_REQUEST);
+        
       }
 
       if (cliente.getPassword() == null || cliente.getEmail() == null) {
         clienteTransfer.setError("Por favor, insira email e senha para completar seu cadastro!");
         clienteTransfer.setAction("cliente-failed");
 
-        // this.template.convertAndSend("saga", clienteTransfer);
         return clienteTransfer;
       }
 
@@ -80,7 +78,6 @@ public class ClienteReceiver {
         clienteTransfer.setError("CPF Inálido!");
         clienteTransfer.setAction("cliente-failed");
 
-        // this.template.convertAndSend("saga", clienteTransfer);
         return clienteTransfer;
       }
 
